@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0B0B0D">
+<title>稼働設定｜samurai EA</title>
+<meta name="description" content="推奨ロット早見表・パラメータ・VPSなど、EA稼働の詳細設定を初心者と経験者の両方に向けて解説。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700;800&family=Noto+Serif+JP:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html">samurai EA<span class="tick">v1.0</span></a>
+    <nav class="nav-links" aria-label="メインナビゲーション">
+      <a href="index.html">ホーム</a>
+      <a href="account.html">口座開設</a>
+      <a href="install.html">導入方法</a>
+      <a href="settings.html" aria-current="page">稼働設定</a>
+      <a href="column.html">コラム</a>
+      <a href="faq.html">FAQ</a>
+      <a href="support.html">サポート</a>
+      <a class="nav-cta" href="account.html">¥0ではじめる</a>
+    </nav>
+    <button class="burger" aria-label="メニュー" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<section class="page-head">
+  <div class="wrap">
+    <p class="crumbs"><a href="index.html">ホーム</a> / 稼働設定</p>
+    <p class="eyebrow">Step 03 — Configure</p>
+    <h1 class="h-lg">稼働設定</h1>
+    <p class="lede" style="margin-top:.8rem">初心者はまず「推奨設定」をそのままコピーすれば稼働できます。経験者向けに各パラメータの意味と調整の考え方も用意しました。</p>
+  </div>
+</section>
+
+<!-- ===== Recommended (beginner) ===== -->
+<section class="section">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow">For Beginners</p>
+      <h2 class="h-lg">まずはこの設定でOK</h2>
+      <p class="lede" style="margin-top:1rem">設定するのは<strong>開始ロットだけ</strong>です。通貨ペア・時間足を合わせ、口座タイプごとの早見表どおりにロットを入力すれば稼働できます。</p>
+    </div>
+
+    <div class="callout callout--pine reveal" style="margin-top:1.6rem">
+      <strong>稼働条件：</strong>通貨ペア <strong>GOLD（XAUUSD）</strong>／時間足 <strong>M1（1分足）</strong>／VPSでの24時間稼働を推奨します。
+    </div>
+
+    <div class="callout reveal" style="margin-top:1rem">
+      <strong>基本方針：</strong>下記の3点だけ設定し、他のパラメータはEAに最初から表示されている<strong>デフォルト値のまま</strong>でお使いください。なお、経済指標の発表前後は<strong>自動でエントリーを停止する設定</strong>になっているため、指標のたびに操作する必要はなく、基本は<strong>完全放置で問題ありません</strong>。
+    </div>
+
+    <div class="mt4-alert reveal">
+      <span class="lbl">CURRENT SETTINGS — 現在の相場に合わせた推奨設定</span>
+      <p class="big">① 開始ロット＝早見表どおり　② ナンピン幅＝<em>20pips</em>　③ 金曜日＝<em>EA停止</em></p>
+      <p class="sub">現在の相場環境に合わせ、ロットを従来の約1/2に引き下げ、ナンピン幅を20pipsに広げています。ナンピン倍率は<strong>1.3のまま</strong>変更不要です。また、金曜日は稼働を停止する運用としています（稼働スケジュールで金曜日を「EA停止」に設定）。</p>
+    </div>
+
+    <h3 class="h-md reveal" style="margin-top:2.2rem">マイクロ口座 / セント口座<span class="muted" style="font-size:.85rem;font-weight:400;margin-left:.6rem">推奨5万円以上／最低1万円〜（5万円未満はHFMセント口座）</span></h3>
+    <div class="table-wrap reveal" style="margin-top:.9rem">
+      <table class="data">
+        <thead><tr><th>資金</th><th>開始ロット</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">1万円</td><td class="mono">0.02</td></tr>
+          <tr><td class="mono">2万円</td><td class="mono">0.05</td></tr>
+          <tr><td class="mono">3万円</td><td class="mono">0.08</td></tr>
+          <tr><td class="mono">4万円</td><td class="mono">0.1</td></tr>
+          <tr><td class="mono">5万円</td><td class="mono">0.12</td></tr>
+          <tr><td class="mono">10万円</td><td class="mono">0.25</td></tr>
+          <tr><td class="mono">15万円</td><td class="mono">0.37</td></tr>
+          <tr><td class="mono">20万円</td><td class="mono">0.5</td></tr>
+          <tr><td class="mono">30万円</td><td class="mono">0.8</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout reveal" style="margin-top:1rem">マイクロ口座は1ポジションあたり最大100ロット（10万通貨）までの制限があります。40万円以上で運用する場合はスタンダード口座が無難です（2口座に分けて運用することでも対策できます）。</div>
+
+    <h3 class="h-md reveal" style="margin-top:2.2rem">スタンダード口座<span class="muted" style="font-size:.85rem;font-weight:400;margin-left:.6rem">推奨・最低ともに40万円〜</span></h3>
+    <div class="table-wrap reveal" style="margin-top:.9rem">
+      <table class="data">
+        <thead><tr><th>資金</th><th>開始ロット</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">40万円</td><td class="mono">0.01</td></tr>
+          <tr><td class="mono">80万円</td><td class="mono">0.02</td></tr>
+          <tr><td class="mono">120万円</td><td class="mono">0.03</td></tr>
+          <tr><td class="mono">160万円</td><td class="mono">0.04</td></tr>
+          <tr><td class="mono">200万円</td><td class="mono">0.05</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="muted reveal" style="font-size:.85rem;margin-top:.8rem">※以降、資金が40万円増えるごとに0.01ロット上げます。推奨は証拠金40万円で0.01ロット。ボーナス利用時はボーナスを含めた額で計算してください。</p>
+  </div>
+</section>
+
+<!-- ===== Money management ===== -->
+<section class="section" id="money">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow">Money Management</p>
+      <h2 class="h-lg">おすすめの資金管理</h2>
+      <p class="lede" style="margin-top:1rem">利益を守りながら運用するために、「単利＋2口座」での資金管理を推奨しています。増えた利益を別口座へ逃がし、運用口座のリスクを一定に保つ考え方です。</p>
+    </div>
+    <div class="illus reveal" style="margin-top:1.6rem"><svg viewBox="0 0 800 240" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="2口座の資金管理"><rect x="24" y="34" width="250" height="172" rx="12" fill="#141418" stroke="#33333b"/><text x="44" y="66" font-family="Noto Serif JP,serif" font-size="15" fill="#f5f5f6">口座A（運用）</text><text x="44" y="86" font-family="JetBrains Mono,monospace" font-size="10" fill="#65656e">samurai EA を単利で稼働</text><rect x="44" y="150" width="20" height="30" fill="#4ADE80"/><rect x="72" y="138" width="20" height="42" fill="#4ADE80"/><rect x="100" y="150" width="20" height="30" fill="#4ADE80"/><rect x="128" y="140" width="20" height="40" fill="#4ADE80"/><text x="44" y="128" font-family="Noto Serif JP,serif" font-size="12" fill="#9a9aa3">資金は一定額を保つ</text><path d="M286 116 l224 0" stroke="#4ADE80" stroke-width="3"/><path d="M510 116 l-12 -7 0 14 z" fill="#4ADE80"/><text x="398" y="100" text-anchor="middle" font-family="Noto Serif JP,serif" font-size="14" fill="#4ADE80">毎日、利益を資金移動</text><text x="398" y="138" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="10" fill="#65656e">daily transfer</text><rect x="526" y="34" width="250" height="172" rx="12" fill="#141418" stroke="#1f6b40"/><text x="546" y="66" font-family="Noto Serif JP,serif" font-size="15" fill="#f5f5f6">口座B（待避）</text><text x="546" y="86" font-family="JetBrains Mono,monospace" font-size="10" fill="#65656e">利益を蓄積して守る</text><ellipse cx="651" cy="176" rx="70" ry="12" fill="none" stroke="#4ADE80" stroke-width="2"/><ellipse cx="651" cy="158" rx="60" ry="11" fill="none" stroke="#4ADE80" stroke-width="2"/><ellipse cx="651" cy="142" rx="48" ry="10" fill="none" stroke="#4ADE80" stroke-width="2"/><ellipse cx="651" cy="128" rx="36" ry="9" fill="#4ADE80" opacity="0.25" stroke="#4ADE80" stroke-width="2"/><text x="651" y="112" text-anchor="middle" font-family="Noto Serif JP,serif" font-size="12" fill="#4ADE80">利益が積み上がる</text></svg></div>
+    <div class="grid grid-2 reveal" style="margin-top:1.4rem">
+      <div class="card"><span class="num">RULE</span><h3>やり方</h3><p>①口座を2つ用意（運用口座・待避口座）<br>②samurai EA は<strong>運用口座で単利</strong>で回す<br>③毎日、出た利益を<strong>待避口座へ資金移動</strong><br>④運用口座は一定額を保ち、待避口座に利益を積み上げる</p></div>
+      <div class="card"><span class="num">WHY</span><h3>ねらい</h3><p>運用口座の資金を一定に保つことで、ロット（＝リスク）を一定に維持できます。増えた利益は待避口座へ逃がすので、相場が急変しても利益を守りやすくなります。複利で一気に増やすより、着実さを重視した運用方法です。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Money management ===== -->
+<section class="section">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow">Money Management</p>
+      <h2 class="h-lg">資金管理（推奨）</h2>
+      <p class="lede" style="margin-top:1rem">単利運用を基本に、口座を2つ使う方法を推奨します。増えた利益を毎日もう一方の口座へ移すことで、利益を確保しながら運用口座のリスクを一定に保てます。</p>
+    </div>
+    <div class="reveal"><svg class="mm-diagram" viewBox="0 0 800 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="2口座の資金管理イメージ">
+<rect x="20" y="55" width="300" height="150" rx="12" fill="#0f0f13" stroke="#33333b"/>
+<text x="42" y="88" font-family="JetBrains Mono, monospace" font-size="11" letter-spacing="1.5" fill="#4ADE80">ACCOUNT A</text>
+<text x="42" y="120" font-family="Noto Serif JP, serif" font-size="18" fill="#f5f5f6">運用口座</text>
+<text x="42" y="148" font-family="Noto Serif JP, serif" font-size="13" fill="#9a9aa3">samurai EA を稼働（単利）</text>
+<rect x="42" y="164" width="120" height="24" rx="12" fill="rgba(74,222,128,.14)" stroke="#1f6b40"/>
+<circle cx="58" cy="176" r="4" fill="#4ADE80"/><text x="70" y="181" font-family="Noto Serif JP, serif" font-size="12" fill="#4ADE80">稼働中</text>
+<rect x="480" y="55" width="300" height="150" rx="12" fill="#0f0f13" stroke="#33333b"/>
+<text x="502" y="88" font-family="JetBrains Mono, monospace" font-size="11" letter-spacing="1.5" fill="#65656e">ACCOUNT B</text>
+<text x="502" y="120" font-family="Noto Serif JP, serif" font-size="18" fill="#f5f5f6">待避口座</text>
+<text x="502" y="148" font-family="Noto Serif JP, serif" font-size="13" fill="#9a9aa3">利益を移して確保しておく</text>
+<rect x="700" y="150" width="52" height="38" rx="6" fill="none" stroke="#4ADE80" stroke-width="2"/><circle cx="726" cy="169" r="8" fill="none" stroke="#4ADE80" stroke-width="2"/>
+<path d="M330 130 L470 130" stroke="#4ADE80" stroke-width="3"/>
+<path d="M470 130 l-12 -7 0 14 z" fill="#4ADE80"/>
+<text x="400" y="116" text-anchor="middle" font-family="Noto Serif JP, serif" font-size="13" fill="#4ADE80">毎日</text>
+<text x="400" y="152" text-anchor="middle" font-family="Noto Serif JP, serif" font-size="12" fill="#9a9aa3">利益を資金移動</text>
+</svg></div>
+    <div class="grid grid-2 reveal" data-stagger style="margin-top:.5rem">
+      <div class="card"><span class="num">STEP 01</span><h3>単利で運用する</h3><p>複利にはせず、開始ロットを固定した単利運用を基本にします。1回あたりのリスクを一定に保てます。</p></div>
+      <div class="card"><span class="num">STEP 02</span><h3>口座を2つ用意する</h3><p>「運用口座（A）」と「待避口座（B）」の2つを用意します。EAを回すのはAだけです。</p></div>
+      <div class="card"><span class="num">STEP 03</span><h3>運用口座だけで回す</h3><p>samurai EA は運用口座Aでのみ稼働させます。Bは利益を貯めておくための口座です。</p></div>
+      <div class="card"><span class="num">STEP 04</span><h3>毎日、利益を資金移動</h3><p>その日に出た利益は、毎日 待避口座Bへ資金移動します。増えた利益を守りながら、Aは一定額でリスクを一定に保てます。</p></div>
+    </div>
+    <div class="callout reveal" style="margin-top:1.2rem">運用口座Aを一定額に保つことで、ロットとリスクを一定にでき、増えた利益はBで確保できます。まずはこの単利＋2口座の運用から始めるのがおすすめです。</div>
+
+    <div class="callout callout--pine reveal" style="margin-top:1rem">
+      <strong>なぜ利益を移すのか？</strong>　その考え方の背景を、たとえ話と例を使ってコラムにまとめました。<br>
+      <a href="column.html" style="display:inline-block;margin-top:.7rem;color:var(--accent);text-decoration:underline;font-weight:700">▶ コラム：資金管理という考え方を読む</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Setup (general tab + chart) ===== -->
+<section class="section" style="background:var(--bg-2);border-block:1px solid var(--line)">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow">Setup</p>
+      <h2 class="h-lg">EA設置時の設定</h2>
+    </div>
+    <div class="grid grid-2 reveal" style="margin-top:1.8rem">
+      <div class="card">
+        <span class="num">全般タブ</span>
+        <h3>設置前のチェック</h3>
+        <p>チャートにEAを適用したら「全般」タブで次の2つを設定してください。<br>・<strong>「Long ＆ Short」</strong>を選択<br>・<strong>「DLLの使用を許可する」にチェック</strong>（未チェックだとEAを設置できません）</p>
+      </div>
+      <div class="card">
+        <span class="num">CHART</span>
+        <h3>チャート画面の機能</h3>
+        <p><strong>一括決済ボタン</strong>（左から）ロング一括決済／ショート一括決済／一括決済。手動で損切り・利確したい時に使います。<br><strong>指標発表時間の線</strong>：赤い縦線が指標の発表時間。指標自動停止をONにしていると、その前後はEAが新規エントリーを停止します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VPS ===== -->
+<section class="section" style="background:var(--bg-2);border-block:1px solid var(--line)">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow">Environment</p>
+      <h2 class="h-lg">VPS（24時間稼働）</h2>
+      <p class="lede" style="margin-top:1rem">EAはPCの電源を切ると止まります。安定運用にはVPS（仮想サーバー）での24時間稼働がおすすめです。</p>
+    </div>
+    <div class="grid grid-3 reveal" style="margin-top:1.8rem">
+      <div class="card"><span class="num">SPEC</span><h3>推奨スペック</h3><p>メモリ2GB以上／MT4の同時稼働数に応じて選択。EA1つなら最小構成でも可。</p></div>
+      <div class="card"><span class="num">SERVICE</span><h3>おすすめVPS</h3><p>MT4に対応した<strong>ABLENET VPS</strong>を推奨します。FX自動売買の定番で、安定稼働に向いています。</p><a class="btn btn--primary" href="https://www.ablenet.jp/vps/order/index.cgi?partner_id=1691" target="_blank" rel="noopener" style="margin-top:1rem;font-size:.88rem;padding:.7rem 1.3rem">ABLENET VPSを申し込む <span class="arw">→</span></a></div>
+      <div class="card"><span class="num">SETUP</span><h3>設定の流れ</h3><p>VPS契約 → リモート接続 → <strong>VPSのブラウザでこのサイトを開いてEAをダウンロード</strong> → MT4導入 → EA設置。<br><span style="color:var(--accent)">※EAはMT4を動かすVPSの中に置く必要があります。手元のPCでダウンロードしてもVPSには入りません。</span></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Advanced (accordion) ===== -->
+<section class="section">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow">Parameters</p>
+      <h2 class="h-lg">パラメータ詳細</h2>
+      <p class="lede" style="margin-top:1rem">ロット数以外は<strong>デフォルトのまま推奨</strong>です。以下は「仕組みを理解して調整したい方」向けの解説なので、通常は触る必要はありません。</p>
+    </div>
+
+    <div class="reveal" style="margin-top:1.8rem">
+      <details class="acc" open>
+        <summary><span><span class="q">01</span>ロット・複利設定</span><span class="ico">＋</span></summary>
+        <div class="body">
+          <p><strong>単利/複利ロット切り替え：</strong>「単利運用」と「複利運用」をプルダウンで選択します。</p>
+          <p><strong>開始ロット（単利）：</strong>単利運用の初回エントリーロット。上の早見表どおりに入力してください。例）マイクロ口座で5万円→<strong>0.12</strong>、スタンダード口座で40万円→<strong>0.01</strong>。</p>
+          <p><strong>開始ロット（複利）：</strong>複利運用の初回エントリーロット。値の考え方は単利と同じです（早見表どおり）。</p>
+          <p><strong>金額設定（複利）指定以下は発注しない：</strong>いくらごとにロットを上げるかの基準金額。基準額以下ではエントリーしません。例）開始0.01・基準10万円なら、残高が20万円を超えるとロットが0.02に変わります。</p>
+        </div>
+      </details>
+
+      <details class="acc">
+        <summary><span><span class="q">02</span>ナンピン設定</span><span class="ico">＋</span></summary>
+        <div class="body">
+          <p><strong>ナンピン幅(Pips)：</strong><strong style="color:var(--accent)">20pips</strong> に設定してください（現在の相場に合わせた推奨値）。</p>
+          <p><strong>ナンピン回数：</strong>最大ポジション数の上限。デフォルト<strong>30ポジション</strong>。</p>
+          <p><strong>ナンピンインターバル(分)：</strong>ナンピン後、一定時間は次のナンピンを行わない機能。例）15なら次のナンピンは15分後以降。</p>
+          <p><strong>ナンピン倍率：</strong>ナンピン時のロット倍率。<strong style="color:var(--accent)">1.3</strong> のまま変更せずにお使いください。</p>
+        </div>
+      </details>
+
+      <details class="acc">
+        <summary><span><span class="q">03</span>急変相場・トレール</span><span class="ico">＋</span></summary>
+        <div class="body">
+          <p><strong>急変相場 過剰エントリー回避：</strong>暴騰暴落時にナンピン幅を広げ、過剰なナンピンを抑えます。<strong>true（ON）推奨</strong>。</p>
+          <p><strong>トレール設定(Pips)：</strong>利確条件到達後、ポジション方向へ動いた時の利確Pips。デフォルト<strong>7</strong>、基本このままで。</p>
+          <p><strong>トレール設定(SL_Pips)：</strong>利確条件到達後、逆方向へ動いた時の利確Pips。デフォルト<strong>3</strong>、基本このままで。</p>
+        </div>
+      </details>
+
+      <details class="acc">
+        <summary><span><span class="q">04</span>経済指標フィルター</span><span class="ico">＋</span></summary>
+        <div class="body">
+          <p><strong>経済指標の自動停止：</strong>trueで指標発表時にEAを自動停止、falseでフル稼働。停止前に保有したポジションはロジック通り継続し、決済後は指定時間内は新規エントリーしません。</p>
+          <p><strong>停止する指標の選択：</strong>アメリカ指標のみ／全指標／ユーロ／ポンド。全指標は関係ない国でも停止して利率が下がるため、<strong>「アメリカ指標のみ」推奨</strong>。</p>
+          <p><strong>停止する指標ランク（★1〜5）：</strong>設定ランク以上が停止対象（例：★3なら★3〜5）。雇用統計・FOMC・CPIなど主要指標はほぼ★5。<strong>★4推奨</strong>。</p>
+          <p><strong>停止する指標種別：</strong>通常／イレギュラー／通常+イレギュラー。<strong>「通常+イレギュラー」推奨</strong>。</p>
+          <p><strong>指標発表前のEA停止時間(分)：</strong>デフォルト<strong>45分</strong>。</p>
+          <p><strong>指標発表後のEA停止時間(分)：</strong>デフォルト<strong>120分</strong>。</p>
+          <p><strong>指標発表前のポジション全決済(分)：</strong>含み損に関わらず決済されるため、基本は<strong>0分</strong>（無効）で設定してください。</p>
+          <p><strong>指標をチャートに表示する：</strong>trueで対象指標をチャート上に表示します。</p>
+          <p><strong>指標停止中にナンピンエントリーも停止：</strong>trueで、指標停止時間中はナンピンを行いません（利確条件に達した場合の利確は実行）。falseなら通常通りナンピンします。</p>
+        </div>
+      </details>
+
+      <details class="acc">
+        <summary><span><span class="q">05</span>稼働スケジュール</span><span class="ico">＋</span></summary>
+        <div class="body">
+          <p><strong>月曜日〜金曜日：</strong>各曜日の稼働方法を「EA稼働（フル稼働）／EA停止（完全停止）／スケジュール設定（指定時間内で稼働）」から選べます。</p>
+          <p><strong style="color:var(--accent)">現在の推奨設定：月曜〜木曜は「EA稼働」、金曜日は「EA停止」に設定してください。</strong>週末をまたぐ急変動を避けるため、金曜日は稼働を停止する運用としています。</p>
+          <p><strong>開始・停止(MT4時間)：</strong>スケジュール設定の開始／停止時間。いずれも<strong>MT4時間</strong>での設定です（日本時間ではない点に注意）。</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="callout reveal" style="margin-top:1.5rem">迷ったら各項目のデフォルト（推奨）のままで稼働できます。変更は少しずつ、意味を理解したうえで行ってください。</div>
+
+    <div class="cta-row" style="display:flex;gap:.8rem;flex-wrap:wrap;margin-top:2rem">
+      <a class="btn btn--primary" href="support.html">EAを受け取る <span class="arw">→</span></a>
+      <a class="btn btn--ghost" href="faq.html">FAQを見る</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">samurai EA</div>
+        <p class="muted" style="font-size:.88rem;max-width:34ch">無料EA配布サイト。EAの導入から稼働までをサポートします。</p>
+      </div>
+      <div class="foot-col">
+        <h4>ガイド</h4>
+        <a href="account.html">口座開設</a>
+        <a href="install.html">導入方法</a>
+        <a href="settings.html">稼働設定</a>
+        <a href="column.html">コラム</a>
+        <a href="faq.html">FAQ</a>
+      </div>
+      <div class="foot-col">
+        <h4>サポート</h4>
+        <a href="support.html">お問い合わせ</a>
+        <a href="legal.html">免責事項</a>
+      </div>
+    </div>
+    <div class="disclaimer">
+      <strong>免責事項：</strong>本サイトはFX自動売買ツール（EA）の情報提供および無料配布を目的としています。掲載する実績はフォワードテスト等の結果であり、将来の運用成果を保証するものではありません。FX取引は元本を割り込む可能性があります。投資の最終判断はご自身の責任で行ってください。当サイトが紹介するXM・HFMは海外の取引業者です。ご利用は各自の判断・責任でお願いいたします。<br>
+      © <span id="yr">2025</span> samurai EA. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+</body>
+</html>

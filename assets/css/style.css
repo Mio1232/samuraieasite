@@ -382,3 +382,22 @@ body.gl-active{background:transparent}
 .mt4-alert .big{font-family:var(--font-disp);font-weight:800;font-size:clamp(1.15rem,3vw,1.6rem);line-height:1.6}
 .mt4-alert .big em{font-style:normal;color:var(--accent)}
 .mt4-alert .sub{color:var(--text-dim);font-size:.9rem;margin-top:.6rem;line-height:1.8}
+
+/* ---- ムサシEA 紹介 ---- */
+.lineup{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem}
+@media(max-width:720px){.lineup{grid-template-columns:1fr}}
+.lineup-card{position:relative;border:1px solid var(--line-2);border-radius:16px;padding:1.8rem;background:var(--bg-2);overflow:hidden}
+.lineup-card .tag2{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--text-faint)}
+.lineup-card h3{font-family:var(--font-disp);font-weight:800;font-size:1.5rem;margin:.5rem 0 .2rem}
+.lineup-card .role{font-family:var(--font-disp);font-size:1rem;margin-bottom:.4rem}
+.lineup-card ul{list-style:none;padding:0;margin:1rem 0 0}
+.lineup-card li{position:relative;padding-left:1.2rem;color:var(--text-dim);font-size:.92rem;line-height:2}
+.lineup-card li::before{content:"";position:absolute;left:0;top:.85em;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.lineup-card.samurai{border-color:#1f6b40}
+.lineup-card.samurai .role{color:var(--accent)}
+.lineup-card.musashi{background:linear-gradient(180deg,rgba(34,211,238,.06),var(--bg-2))}
+.lineup-card.musashi .role{color:#22d3ee}
+.lineup-card.musashi li::before{background:#22d3ee}
+.lineup-badge{display:inline-block;font-family:var(--font-mono);font-size:.62rem;letter-spacing:.12em;padding:.2rem .6rem;border-radius:999px;margin-left:.4rem;vertical-align:middle}
+.badge-free{color:var(--accent);border:1px solid #1f6b40;background:rgba(74,222,128,.08)}
+.badge-paid{color:#22d3ee;border:1px solid #1a5563;background:rgba(34,211,238,.08)}

@@ -401,3 +401,35 @@ body.gl-active{background:transparent}
 .lineup-badge{display:inline-block;font-family:var(--font-mono);font-size:.62rem;letter-spacing:.12em;padding:.2rem .6rem;border-radius:999px;margin-left:.4rem;vertical-align:middle}
 .badge-free{color:var(--accent);border:1px solid #1f6b40;background:rgba(74,222,128,.08)}
 .badge-paid{color:#22d3ee;border:1px solid #1a5563;background:rgba(34,211,238,.08)}
+
+/* ---- ムサシEA 実績エビデンス ---- */
+.ev-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem;margin-top:1.4rem}
+@media(max-width:720px){.ev-stats{grid-template-columns:1fr 1fr}}
+.ev-stat{border:1px solid var(--line-2);background:var(--bg-2);border-radius:12px;padding:1.1rem 1rem;text-align:center}
+.ev-stat .cap{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.1em;color:var(--text-faint)}
+.ev-stat .amt{font-family:var(--font-disp);font-weight:800;font-size:1.35rem;color:#22d3ee;margin:.35rem 0 .1rem}
+.ev-stat .pct{font-family:var(--font-mono);font-size:.78rem;color:var(--accent)}
+.ev-shots{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem;margin-top:1.2rem}
+@media(max-width:720px){.ev-shots{grid-template-columns:1fr 1fr}}
+.ev-shot{border:1px solid var(--line-2);border-radius:12px;overflow:hidden;background:#000;display:block;position:relative}
+.ev-shot img{display:block;width:100%;height:180px;object-fit:cover;object-position:top;opacity:.96;transition:transform .3s}
+.ev-shot:hover img{transform:scale(1.03)}
+.ev-shot .lbl{position:absolute;left:0;right:0;bottom:0;padding:.5rem .6rem;font-family:var(--font-mono);font-size:.64rem;
+  color:#fff;background:linear-gradient(180deg,transparent,rgba(0,0,0,.85))}
+.ev-note{color:var(--text-faint);font-size:.78rem;line-height:1.9;margin-top:1rem}
+
+/* ---- ライトボックス（全画面拡大） ---- */
+.lb-overlay{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.92);
+  display:flex;align-items:center;justify-content:center;padding:24px;
+  opacity:0;visibility:hidden;transition:opacity .22s ease;cursor:zoom-out;-webkit-tap-highlight-color:transparent}
+.lb-overlay.open{opacity:1;visibility:visible}
+.lb-overlay img{max-width:100%;max-height:100%;width:auto;height:auto;
+  border-radius:8px;box-shadow:0 30px 80px -20px rgba(0,0,0,.8);
+  transform:scale(.97);transition:transform .22s ease;object-fit:contain}
+.lb-overlay.open img{transform:scale(1)}
+.lb-close{position:absolute;top:16px;right:18px;width:42px;height:42px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.25);background:rgba(0,0,0,.4);color:#fff;
+  font-size:1.4rem;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.lb-hint{position:absolute;bottom:18px;left:0;right:0;text-align:center;color:rgba(255,255,255,.6);
+  font-family:var(--font-mono);font-size:.72rem;letter-spacing:.05em}
+.ev-shot{cursor:zoom-in}

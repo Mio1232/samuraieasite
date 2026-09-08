@@ -165,37 +165,26 @@
   } else { play(); }
 })();
 
-/* ===== ライトボックス（収支画像の全画面表示） ===== */
+/* ===== ライトボックス（画像の全画面表示・イベント委譲） ===== */
 (function(){
-  var shots = document.querySelectorAll('.ev-shot');
-  if(!shots.length) return;
   var ov = document.createElement('div');
   ov.className = 'lb-overlay';
   ov.innerHTML = '<button class="lb-close" aria-label="閉じる">&times;</button><img alt=""><div class="lb-hint">タップ / Esc で閉じる</div>';
   document.body.appendChild(ov);
   var img = ov.querySelector('img');
-  function open(src, alt){
-    img.src = src; img.alt = alt || '';
-    ov.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function close(){
-    ov.classList.remove('open');
-    document.body.style.overflow = '';
-    setTimeout(function(){ if(!ov.classList.contains('open')) img.src=''; }, 240);
-  }
-  shots.forEach(function(a){
-    a.addEventListener('click', function(e){
-      e.preventDefault();
-      var full = a.getAttribute('href') || a.querySelector('img').src;
-      var im = a.querySelector('img');
-      open(full, im ? im.alt : '');
-    });
+  function open(src, alt){ img.src = src; img.alt = alt || ''; ov.classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function close(){ ov.classList.remove('open'); document.body.style.overflow = ''; setTimeout(function(){ if(!ov.classList.contains('open')) img.src=''; }, 240); }
+  // delegate: catches static AND dynamically-rendered images
+  document.addEventListener('click', function(e){
+    var t = e.target.closest('.ev-shot, .figure img[data-zoom]');
+    if(!t) return;
+    e.preventDefault();
+    var innerImg = t.querySelector ? t.querySelector('img') : null;
+    var self = (t.tagName === 'IMG') ? t : null;
+    var full = t.getAttribute && t.getAttribute('href');
+    if(!full) full = self ? self.src : (innerImg ? innerImg.src : '');
+    open(full, self ? self.alt : (innerImg ? innerImg.alt : ''));
   });
-  ov.addEventListener('click', function(e){
-    if(e.target === ov || e.target.classList.contains('lb-close')) close();
-  });
-  document.addEventListener('keydown', function(e){
-    if(e.key === 'Escape' && ov.classList.contains('open')) close();
-  });
+  ov.addEventListener('click', function(e){ if(e.target === ov || e.target.classList.contains('lb-close')) close(); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && ov.classList.contains('open')) close(); });
 })();

@@ -1,0 +1,40 @@
+backend:
+  name: git-gateway
+  branch: main            # ← リポジトリの既定ブランチ名に合わせる（main か master）
+
+# アップロード画像の保存先
+media_folder: "assets/img/gift/uploads"
+public_folder: "/assets/img/gift/uploads"
+
+locale: "ja"
+publish_mode: simple
+
+collections:
+  - name: "gifts"
+    label: "プレゼント記事"
+    label_singular: "プレゼント記事"
+    files:
+      - name: "list"
+        label: "プレゼント記事（一覧をまとめて管理）"
+        file: "data/gifts.json"
+        description: "「記事」を追加・編集・削除できます。上にあるものほど新しく表示されます。"
+        editor:
+          preview: false
+        fields:
+          - label: "記事"
+            name: "items"
+            label_singular: "記事"
+            widget: "list"
+            summary: "{{fields.date}}｜{{fields.title}}"
+            fields:
+              - { label: "公開する", name: "published", widget: "boolean", default: true }
+              - { label: "URL用のスラッグ（半角英数字・例: 2026-09）", name: "slug", widget: "string", pattern: ['^[a-z0-9-]+$', '半角英数字とハイフンのみ'] }
+              - { label: "タイトル", name: "title", widget: "string" }
+              - { label: "日付", name: "date", widget: "datetime", date_format: "YYYY.MM.DD", time_format: false, format: "YYYY.MM.DD" }
+              - { label: "ステータス", name: "status", widget: "select", options: ["開催中", "終了"], default: "開催中" }
+              - { label: "一覧カード用の要約（1〜2行）", name: "summary", widget: "text" }
+              - { label: "サムネイル絵文字（画像がない時に表示）", name: "emoji", widget: "string", default: "🎁", required: false }
+              - { label: "ヒーロー画像（任意）", name: "hero", widget: "image", required: false }
+              - { label: "オープンチャットURL（受け取りボタン用・任意）", name: "openchat", widget: "string", required: false }
+              - { label: "本文（見出し・太字・画像・箇条書きが使えます）", name: "body", widget: "markdown" }
+              - { label: "記事下にEA紹介を表示", name: "showEA", widget: "boolean", default: true }

@@ -501,3 +501,11 @@ body.gl-active{background:transparent}
 /* 記事メタ（日付・タグ） */
 .art-meta{display:flex;align-items:center;gap:.7rem;flex-wrap:wrap;margin-top:.6rem}
 .art-tag{font-family:var(--font-mono);font-size:.64rem;letter-spacing:.1em;padding:.2rem .7rem;border-radius:999px;background:rgba(74,222,128,.1);color:var(--accent);border:1px solid #1f6b40}
+
+/* ---- 記事下 EA誘導：見透かし共感ブロック ---- */
+.empathy{border:1px solid var(--line-2);background:var(--bg-2);border-radius:14px;padding:1.5rem 1.6rem;margin:1.6rem 0 0}
+.empathy ul{list-style:none;padding:0;margin:0}
+.empathy li{font-family:var(--font-disp);font-size:1.06rem;color:var(--text);padding:.4rem 0 .4rem 1.7rem;position:relative;line-height:1.6}
+.empathy li::before{content:"✓";position:absolute;left:0;top:.4rem;color:var(--accent);font-weight:700}
+.empathy p{margin-top:1rem;color:var(--text-dim);line-height:1.9}
+.empathy .down{margin-top:1.2rem;text-align:center;font-family:var(--font-disp);font-weight:800;font-size:1.1rem;color:var(--accent)}

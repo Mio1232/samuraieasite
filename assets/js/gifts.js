@@ -82,9 +82,34 @@
 
   /* ---------- EA紹介ブロック ---------- */
   function eaBlock() {
-    return '' +
-      '<h2>あわせて：2つのEAという選択肢</h2>' +
-      '<p>目的に合わせて、2つのEAから選べます。</p>' +
+    var ev = '' +
+      '<h2>EAの実績（2026年7月）</h2>' +
+      '<div class="ev-stats">' +
+        '<div class="ev-stat"><div class="cap">運用 300万円</div><div class="amt">+72万円</div><div class="pct">約 +24%</div></div>' +
+        '<div class="ev-stat"><div class="cap">運用 80万円</div><div class="amt">+15万円</div><div class="pct">約 +18.8%</div></div>' +
+        '<div class="ev-stat"><div class="cap">運用 80万円</div><div class="amt">+14万円</div><div class="pct">約 +17.5%</div></div>' +
+        '<div class="ev-stat"><div class="cap">運用 15万円</div><div class="amt">+3万円</div><div class="pct">約 +20%</div></div>' +
+      '</div>' +
+      '<div class="ev-shots">' +
+        '<a class="ev-shot" href="assets/img/musashi/evidence-1.jpg"><img src="assets/img/musashi/evidence-1.jpg" alt="実績 運用300万円"><span class="lbl">300万 → +72万</span></a>' +
+        '<a class="ev-shot" href="assets/img/musashi/evidence-3.jpg"><img src="assets/img/musashi/evidence-3.jpg" alt="実績 運用80万円"><span class="lbl">80万 → +15万</span></a>' +
+        '<a class="ev-shot" href="assets/img/musashi/evidence-4.jpg"><img src="assets/img/musashi/evidence-4.jpg" alt="実績 +14万" style="height:180px;object-position:center"><span class="lbl">80万 → +14万</span></a>' +
+        '<a class="ev-shot" href="assets/img/musashi/evidence-2.jpg"><img src="assets/img/musashi/evidence-2.jpg" alt="実績 運用15万円"><span class="lbl">15万 → +3万</span></a>' +
+      '</div>' +
+      '<p class="ev-note">画像は実際の利用者の取引画面（掲載許可済み）。タップで拡大できます。2026年7月は、運用資金に対して<strong style="color:var(--accent)">おおむね月+20%前後</strong>（+17〜24％／資金により変動）の実績でした。<br>※利益額は運用資金によって異なります。ナンピンを用いる設計のため、相場急変時にはロスカットのリスクがあり、バックテスト上は年1回程度発生する可能性があります。リスクを抑えるため、単利での運用を推奨しています。<br>※2026年7月の個人の実績です。運用資金・相場により変動し、将来の利益や成果を保証するものではありません。</p>';
+
+    var empathy = '' +
+      '<div class="empathy">' +
+        '<ul>' +
+          '<li>「自分でやってもうまくいかない」</li>' +
+          '<li>「時間が取れない」</li>' +
+          '<li>「出金したことがない」</li>' +
+        '</ul>' +
+        '<p>そんな人にこそ、EAを使ってみてほしいです。</p>' +
+        '<p class="down">詳細はこちら↓</p>' +
+      '</div>';
+
+    return '<hr>' + ev + empathy +
       '<div class="pr-mini lineup-card samurai" style="border-color:#1f6b40">' +
         '<span class="pr-lbl">攻め / 無料</span>' +
         '<h3 style="font-family:var(--font-disp);font-weight:800;font-size:1.3rem;margin:.3rem 0">samurai EA <span class="lineup-badge badge-free">無料</span></h3>' +

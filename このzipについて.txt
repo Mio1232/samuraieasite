@@ -1,0 +1,19 @@
+【収支の差し替え・更新ファイル一式】
+
+このフォルダの中身を、GitHubリポジトリの「同じ場所」に上書きアップロードしてください。
+フォルダ構成はリポジトリと同じなので、中身をまとめてドラッグ＆ドロップすれば、
+それぞれ正しい場所に上書きされます。
+
+含まれるファイル:
+  index.html                         （リポジトリ直下へ）
+  column.html                        （リポジトリ直下へ）
+  assets/js/gifts.js
+  assets/css/style.css
+  assets/img/musashi/evidence-1.jpg
+  assets/img/musashi/evidence-2.jpg
+  assets/img/musashi/evidence-3.jpg
+  assets/img/musashi/evidence-4.jpg
+
+★重要：data/gifts.json は含めていません。
+  あなたが管理画面で作った記事はそのファイルに入っているため、
+  今回も触りません。上の8ファイルだけ差し替えてください。

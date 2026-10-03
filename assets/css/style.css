@@ -509,3 +509,7 @@ body.gl-active{background:transparent}
 .empathy li::before{content:"✓";position:absolute;left:0;top:.4rem;color:var(--accent);font-weight:700}
 .empathy p{margin-top:1rem;color:var(--text-dim);line-height:1.9}
 .empathy .down{margin-top:1.2rem;text-align:center;font-family:var(--font-disp);font-weight:800;font-size:1.1rem;color:var(--accent)}
+
+/* ---- 実績タイル：金額が長い場合の調整（案B） ---- */
+.ev-stat .amt{font-size:clamp(.95rem,2.6vw,1.2rem);line-height:1.25;overflow-wrap:anywhere}
+.ev-stat .cap{min-height:2.2em;display:flex;align-items:center;justify-content:center;text-align:center}

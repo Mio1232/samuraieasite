@@ -120,6 +120,12 @@
         '<span class="pr-lbl">実績重視 / 有料</span>' +
         '<h3 style="font-family:var(--font-disp);font-weight:800;font-size:1.3rem;margin:.3rem 0">ムサシEA <span class="lineup-badge badge-paid">有料</span></h3>' +
         '<p style="color:var(--text-dim);font-size:.92rem;line-height:1.9">安定した積み上げを目指す実績重視のEA。詳細・料金は公式LINEでご案内します。</p>' +
+        '<div class="neo-box">' +
+          '<span class="neo-tag">UPGRADE</span>' +
+          '<h4><span class="up">上位版</span>ムサシEA NEO</h4>' +
+          '<p>標準版の運用に、<span class="neo-feat">オートエントリーコントロール機能</span>を搭載した上位モデル。相場状況を見てエントリーを自動で絞り、危険な場面では自動で見送ります。</p>' +
+          '<div class="cta-row" style="margin-top:.9rem"><a class="btn btn--ghost" href="' + LINE + '" target="_blank" rel="noopener" style="font-size:.85rem;padding:.6rem 1.1rem">NEOの詳細を公式LINEで聞く <span class="arw">&rarr;</span></a></div>' +
+        '</div>' +
         '<div class="cta-row" style="margin-top:1rem"><a class="btn btn--ghost" href="' + LINE + '" target="_blank" rel="noopener">ムサシEAの詳細を公式LINEで聞く <span class="arw">&rarr;</span></a></div>' +
         '<p class="muted" style="font-size:.76rem;margin-top:.8rem">※個人の実績であり、将来の利益や成果を保証するものではありません。相場により損失が生じる場合があります。</p>' +
       '</div>';

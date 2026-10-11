@@ -513,3 +513,11 @@ body.gl-active{background:transparent}
 /* ---- 実績タイル：金額が長い場合の調整（案B） ---- */
 .ev-stat .amt{font-size:clamp(.95rem,2.6vw,1.2rem);line-height:1.25;overflow-wrap:anywhere}
 .ev-stat .cap{min-height:2.2em;display:flex;align-items:center;justify-content:center;text-align:center}
+
+/* ---- ムサシEA NEO 併記 ---- */
+.neo-box{border:1px solid #2b6b78;background:linear-gradient(180deg,rgba(34,211,238,.10),rgba(34,211,238,.02));border-radius:12px;padding:1.2rem 1.3rem;margin-top:1.3rem}
+.neo-box .neo-tag{display:inline-block;font-family:var(--font-mono);font-size:.6rem;letter-spacing:.14em;color:#22d3ee;border:1px solid #2b6b78;border-radius:999px;padding:.15rem .6rem;margin-bottom:.5rem}
+.neo-box h4{font-family:var(--font-disp);font-weight:800;font-size:1.15rem;margin:.1rem 0 .4rem}
+.neo-box h4 .up{font-size:.72rem;color:#22d3ee;font-weight:700;margin-right:.4rem}
+.neo-box p{color:var(--text-dim);font-size:.9rem;line-height:1.85}
+.neo-box .neo-feat{color:#22d3ee;font-weight:700;background:none;border:0;padding:0;display:inline}

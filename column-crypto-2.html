@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0B0B0D">
+<title>仮想通貨を使いFXで入出金する方法（実践編2/2）｜コラム｜samurai EA</title>
+<meta name="description" content="bitbank・Xaman・XMを使った、仮想通貨（XRP）による入金・出金の実務手順をまとめた学習用ガイドです。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700;800&family=Noto+Serif+JP:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html">samurai EA<span class="tick">v1.0</span></a>
+    <nav class="nav-links" aria-label="メインナビゲーション">
+      <a href="index.html">ホーム</a>
+      <a href="account.html">口座開設</a>
+      <a href="install.html">導入方法</a>
+      <a href="settings.html">稼働設定</a>
+      <a href="column.html">コラム</a>
+      <a href="gifts.html">プレゼント</a>
+      <a href="faq.html">FAQ</a>
+      <a href="support.html">サポート</a>
+      <a class="nav-cta" href="account.html">¥0ではじめる</a>
+    </nav>
+    <button class="burger" aria-label="メニュー" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+<section class="page-head">
+  <div class="wrap">
+    <p class="crumbs"><a href="index.html">ホーム</a> / <a href="column.html">コラム</a> / 入出金の実践ガイド</p>
+    <p class="eyebrow">Column</p>
+    <h1 class="h-lg">仮想通貨を使いFXで入出金する方法</h1>
+    <div class="art-meta" style="margin-top:.6rem">
+      <span class="art-tag">実践編 2/2</span>
+      <span class="date" style="font-family:var(--font-mono);font-size:.72rem;color:var(--text-faint)">2026.11.02</span>
+    </div>
+    <p class="lede" style="margin-top:.9rem">準備編に続き、実際に暗号資産（仮想通貨）を使って「国内銀行 → bitbank → Xaman → XM」へ入金し、利益や元金を日本円へ戻す出金までの実務を解説する学習用ガイドです。</p>
+  </div>
+</section>
+
+<section class="section--tight">
+  <div class="wrap article" style="max-width:820px">
+
+    <div class="note-box warn reveal">
+      <div class="nb-t">はじめにお読みください</div>
+      <p>各種手数料や為替レートの差額が生じる場合があります。詳細な金額や計算方法は、各取引所・証券会社のサポート窓口へ直接お問い合わせください。<strong>トラブル防止のため、EA公式LINEでの個別回答は一切行っておりません。</strong>本記事は実務手順を整理した学習用の読み物であり、将来の動作や入出金を保証するものではありません。</p>
+    </div>
+
+    <p class="reveal" style="margin-top:1.2rem"><a href="column-crypto.html" style="color:var(--accent);text-decoration:underline">▶ まだの方は「準備編 1/2（bitbank・Xamanの開設と設定）」から</a></p>
+
+    <nav class="toc reveal">
+      <div class="toc-t">目次</div>
+      <a href="#route">資金移動の全体像（入出金ルート）</a>
+      <a href="#in">XMへの入金実践（日本円 → XRP → XM）</a>
+      <a href="#out">XMからの出金実践（XM → XRP → 日本円）</a>
+      <a href="#last">最後に／免責事項</a>
+    </nav>
+
+    <h2 id="route" class="reveal">資金移動の全体像（入出金ルート）</h2>
+    <p class="reveal">作業に入る前に、資金がどこを通って移動するのか全体像を頭に入れておきましょう。</p>
+    <div class="note-box key reveal">
+      <div class="nb-t">入金ルート</div>
+      <p>国内の銀行口座 → <strong>bitbank</strong>（日本円をXRPに交換）→ <strong>Xaman</strong>（個人ウォレット）→ <strong>XMTrading</strong></p>
+    </div>
+    <div class="note-box key reveal">
+      <div class="nb-t">出金ルート</div>
+      <p>XMTrading → <strong>Xaman</strong>（個人ウォレット）→ <strong>bitbank</strong>（XRPを売却して日本円に）→ 国内の銀行口座</p>
+    </div>
+    <div class="note-box warn reveal">
+      <div class="nb-t">なぜXamanを中継点に挟むのか</div>
+      <p>bitbankと海外FX口座の間には、必ず「Xaman（個人ウォレット）」をクッション（中継点）として挟みます。国内取引所から海外無登録業者への直接送金は、トラベルルールの審査で凍結や送金拒否の対象となる恐れがあるためです。</p>
+    </div>
+
+    <h2 id="in" class="reveal">XMへの入金実践（日本円 → XRP → XM）</h2>
+
+    <h3 class="reveal">STEP 1：bitbankへ日本円を入金する</h3>
+    <p class="reveal">XRPを購入する場合、最低でも買いたい金額の<strong>約1.1倍程度</strong>の日本円残高で注文してください。bitbankアプリで「メニュー」＞「入金」＞「JPY（日本円）」を選択し、表示された振込先口座へ振り込みます。</p>
+    <div class="note-box warn reveal">
+      <div class="nb-t">振込名義に注意</div>
+      <p>画面に振込名義人（例：入金番号＋氏名）の指定がある場合は、必ず指定どおりの名義で銀行側から振り込んでください。</p>
+    </div>
+    <p class="reveal"><a href="https://support.bitbank.cc/hc/ja/articles/360003679193" target="_blank" rel="noopener">bitbank公式：日本円の入金方法 →</a></p>
+
+    <h3 class="reveal">STEP 2：bitbankでリップル（XRP）を購入する</h3>
+    <div class="note-box warn reveal">
+      <div class="nb-t">【超重要】必ず「取引所」で購入すること</div>
+      <p>「販売所」はスプレッド（実質手数料）が非常に高く、買った瞬間に数パーセント損をします。必ず「<strong>取引所</strong>」で購入してください。</p>
+    </div>
+    <p class="reveal">アプリ下の「取引所」＞「XRP/JPY」を選択し、右側の「注文」＞「指値」を選択。購入したいXRPの数量を入力します（現状価格よりほんの少し安く指値を入れると約定しやすいです）。「注文」ボタンを押し、内容を確認して確定します。</p>
+
+    <h3 class="reveal">STEP 3：bitbankからXaman（ウォレット）へXRPを送金する</h3>
+    <p class="reveal">bitbankの「メニュー」＞「出金」＞「XRP（リップル）」をタップ。前編で登録済みの「Xaman（マイウォレット）」の宛先を選び、送金数量を入力します。</p>
+    <ul class="reveal">
+      <li>bitbankのXRP最低引出数量は<strong>20 XRP</strong></li>
+      <li>送金手数料として<strong>0.1 XRP</strong>が別途差し引かれます</li>
+    </ul>
+    <div class="note-box warn reveal">
+      <div class="nb-t">必ずテスト送金から</div>
+      <p>初めての送金時は、まず最小数量（20 XRP程度）でテスト送金を行い、無事届いたことを確認してから残りの全額を送ることを強く推奨します。二段階認証後、bitbankから届く「出金申請の確認メール」内の承認リンクを必ずタップして確定させてください。</p>
+    </div>
+    <p class="reveal">通常1〜3分程度でXamanに通知が届き、XRP残高が反映されます（審査等で数時間〜数日かかる場合もあります）。</p>
+
+    <h3 class="reveal">STEP 4：XamanからXMへ送金する</h3>
+    <p class="reveal">いよいよXMの取引口座へ入金します。<strong>ここが最も集中すべきポイント</strong>です。XMのマイページで入金したい口座を選び「資金を入金」＞入金方法から「Cryptocurrency」を選択します。</p>
+    <ul class="reveal">
+      <li>決済方法：<strong>XRP（Ripple）</strong>を選択</li>
+      <li>入金額（JPY）：入金したい日本円の金額を入力（例：22,000円）</li>
+    </ul>
+    <div class="note-box warn reveal">
+      <div class="nb-t">XRP残高ギリギリで指定しない</div>
+      <p>XRPの相場は秒単位で変動します。Xaman残高ギリギリの日本円を指定すると、送金手続き中のわずかな下落で残高不足となり失敗する恐れがあります。保有XRP評価額より<strong>少し控えめな金額（数千円程度下げる）</strong>を入力してください。</p>
+    </div>
+    <p class="reveal">「確定」を押すと、送金すべき正確なXRP数量（例：98.874779 XRP）／XMの受取アドレス（rから始まる文字列）／<strong>宛先タグ（数字）</strong>の3つが表示されます。Xamanで左上の「送金する（Send）」をタップし、次を貼り付けます。</p>
+    <ul class="reveal">
+      <li>送金数量：XM画面の正確なXRP数量をコピーして貼り付け</li>
+      <li>宛先アドレス：XMの受取アドレスをコピーして貼り付け</li>
+      <li>宛先タグ：<strong>【必須】</strong>XM画面の宛名タグ（数字）をコピーして貼り付け</li>
+    </ul>
+    <div class="note-box warn reveal">
+      <div class="nb-t">宛先タグを入れ忘れると資金が迷子になります</div>
+      <p>タグを入れ忘れると、送金した資金がXM側で迷子になります。貼り付け後、アドレス・タグの<strong>先頭3文字・末尾3文字</strong>を必ず目視照合してください。確認後、画面下のスライダーを右にスライドして送信します。通常1〜3分でXM口座へ日本円として自動換算され反映されます。</p>
+    </div>
+
+    <h2 id="out" class="reveal">XMからの出金実践（XM → XRP → 日本円）</h2>
+    <p class="reveal">トレードで得た利益や元金を国内銀行へ戻す手順です。入金と逆の順番で辿ります。</p>
+
+    <h3 class="reveal">STEP 1：XMからXaman（ウォレット）へ出金リクエスト</h3>
+    <p class="reveal">XMのマイページで「資金を出金」＞「Cryptocurrency（暗号資産）」を選択し、次を入力します。</p>
+    <ul class="reveal">
+      <li>出金通貨：<strong>XRP（Ripple）</strong></li>
+      <li>仮想通貨アドレス：Xamanの受取アドレス（rから始まる）を入力（Xamanホームの「受取（Receive）」からコピー）</li>
+      <li>ネットワーク：<strong>RCL</strong></li>
+      <li>宛先タグ：Xamanは個人専用ウォレットのためタグは不要だが、XMの仕様上空欄にできないので「<strong>1</strong>」を入力</li>
+      <li>出金希望額（JPY）：出金したい日本円金額を入力</li>
+    </ul>
+    <p class="reveal">案内に従い顔認証等を完了し、XMから届く出金確認メールの承認ボタンをクリックして確定します。処理完了後、数分〜数十分でXamanにXRPが着金します。</p>
+
+    <h3 class="reveal">STEP 2：XamanからbitbankへXRPを送金する</h3>
+    <p class="reveal">bitbankで「メニュー」＞「入金」＞「XRP（リップル）」を選択し、<strong>預入用XRPアドレス</strong>と<strong>宛先タグ（数字）</strong>を表示したまま、Xamanの「送金する（Send）」から送金します。</p>
+    <ul class="reveal">
+      <li>数量：bitbankへ送りたいXRP数量（全額の場合は「全て」）</li>
+      <li>宛先：bitbankの「預入用XRPアドレス」を貼り付け</li>
+      <li>宛先タグ：<strong>【必須】</strong>bitbankの「宛先タグ（数字）」を貼り付け</li>
+    </ul>
+    <div class="note-box warn reveal">
+      <div class="nb-t">取引所へ戻す際はタグが絶対必須</div>
+      <p>取引所へ戻す際は、口座を識別するために宛先タグが絶対に必須です。アドレス・タグの先頭と末尾を指差し確認し、スライダーを右にスライドして送信します。トラベルルールに基づく取引審査の完了後、bitbankの口座残高にXRPが反映されます。</p>
+    </div>
+
+    <h3 class="reveal">STEP 3：bitbankでXRPを売却し、日本円を銀行へ出金する</h3>
+    <p class="reveal">bitbankの「取引所」＞「XRP/JPY」＞「注文」で「売り」を選び、成行（または指値）で保有XRPを売却します。これで資産が日本円に戻ります。続いて「メニュー」＞「出金」＞「JPY（日本円）」で、ご自身の銀行口座・出金希望額を入力し二段階認証を実行。金融機関の営業日・営業時間に応じて、銀行口座へ日本円が振り込まれます。</p>
+
+    <h2 id="last" class="reveal">最後に</h2>
+    <p class="reveal">今回のルートは、現時点でコスト面・スピード面で非常に優れた手法です。しかし前編同様、「この取引所・このルートだけで未来永劫100%安心」というものは投資の世界に存在しません。金融庁の規制強化、トラベルルールの厳格化、取引所のメンテナンスやセキュリティトラブル、提携銀行間の入出金制限、手数料体系の改定などはいつでも起こり得ます。</p>
+    <blockquote class="reveal">bitbankをメインに使いつつ、予備として別の国内取引所の口座もあらかじめ複数開設して認証を済ませておく。迂回ルートを常に手元に持っておくことが、予期せぬルール変更から資産を守る最強の防衛策です。</blockquote>
+    <div class="note-box warn reveal">
+      <div class="nb-t">免責事項（ご利用にあたって）</div>
+      <p>本記事は実務的な操作手順を整理・解説したものです。暗号資産の取引・送金ルール、各取引所や海外証券会社の規約、法的規制は日々予告なく更新され、将来にわたる動作や入出金を保証するものではありません。アドレス入力の誤りや宛先タグの欠落による送金事故（資産の紛失・消失）、各社システムの仕様変更や審査遅延に伴う損失について、当方では一切の責任を負いかねます。実際の送金時は必ず最新の案内を熟読し、初回は必ず少額のテスト送金を行うなど、すべて自己責任の原則のもと、細心の注意を払って進めてください。</p>
+    </div>
+
+    <div class="cta-row reveal" style="display:flex;gap:.8rem;flex-wrap:wrap;margin-top:2.2rem">
+      <a class="btn btn--ghost" href="column-crypto.html">準備編 1/2 を読む</a>
+      <a class="btn btn--ghost" href="column.html">コラム一覧へ戻る</a>
+    </div>
+
+  </div>
+</section>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">samurai EA</div>
+        <p class="muted" style="font-size:.88rem;max-width:34ch">無料EA配布サイト。EAの導入から稼働までをサポートします。</p>
+      </div>
+      <div class="foot-col">
+        <h4>ガイド</h4>
+        <a href="account.html">口座開設</a>
+        <a href="install.html">導入方法</a>
+        <a href="settings.html">稼働設定</a>
+        <a href="column.html">コラム</a>
+        <a href="gifts.html">プレゼント</a>
+        <a href="faq.html">FAQ</a>
+      </div>
+      <div class="foot-col">
+        <h4>サポート</h4>
+        <a href="support.html">お問い合わせ</a>
+        <a href="legal.html">免責事項</a>
+      </div>
+    </div>
+    <div class="disclaimer">
+      <strong>免責事項：</strong>本サイトはFX自動売買ツール（EA）の情報提供および無料配布を目的としています。掲載する実績はフォワードテスト等の結果であり、将来の運用成果を保証するものではありません。FX取引は元本を割り込む可能性があります。投資の最終判断はご自身の責任で行ってください。当サイトが紹介するXM・HFMは海外の取引業者です。ご利用は各自の判断・責任でお願いいたします。<br>
+      © <span id="yr">2025</span> samurai EA. All rights reserved.
+    </div>
+  </div>
+</footer>
+<script src="assets/js/main.js"></script>
+<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+</body>
+</html>
